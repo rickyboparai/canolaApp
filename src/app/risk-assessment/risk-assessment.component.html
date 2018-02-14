@@ -1,0 +1,89 @@
+<body>    
+    <h2>SCLEROTINIA RISK ASSESSMENT</h2>
+    <h1>Show location name</h1>
+    <h1>Show total risk points</h1>
+    <h3>Show text regarding fungicide spray recommendation</h3>
+    <table style="width:100%">
+        <tr>
+            <th>Risk Factors</th>
+            <th>Select Options</th>
+            <th>Risk Points</th>
+        </tr>
+        <tr>
+            <td>Rainfall in the last 14 days<i></i></td>
+            <td>                           
+                <input type="radio" [(ngModel)]="riskPoint" value="" name="riskPoint"/>Automatic Selection for the selected location<br>
+                <label>Manual Entry</label><br>
+                <input type="radio" [(ngModel)]="riskPoint" value="0" name="riskPoint"/>Less than 10 mm = 0 risk points<br>  
+                <input type="radio" [(ngModel)]="riskPoint" value="5" name="riskPoint">10-30 mm = 5 risk points<br> 
+                <input type="radio" [(ngModel)]="riskPoint" value="10" name="riskPoint">More than 30 mm = 10 risk points   
+            </td>
+            <td>{{riskPoint}}</td>
+        </tr>
+        <tr>
+            <td>Likedlihood of Rain in the 3 day weather forecast<i></i></td>
+            <td>
+                <input type="radio" [(ngModel)]="riskPoint1" value="" name="riskPoint1">Automatic Selection for the selected location<br>
+                <label>Manual Entry</label><br>
+                <input type="radio" [(ngModel)]="riskPoint1" value="0" name="riskPoint1">0-29% = 0 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint1" value="5" name="riskPoint1">30-59% = 5 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint1" value="10" name="riskPoint1">60-100% = 10 risk points
+            </td>
+            <td>{{riskPoint1}}</td>
+        </tr>  
+        <tr>
+            <td>Plant Density<i></i></td>
+            <td>
+                <div *ngFor=" let item of items">
+                    <input type="radio" name="radiogroup" [(ngModel)]="x" #elem [attr.id]="item.id" value={{item.value}} (change)="onSelectionChange(item)">
+                    {{item.description}}                       
+                </div>
+            </td>
+            <td>{{x}}</td>                
+        </tr> 
+        <tr>
+            <td>Years since last host crop<i></i></td>
+            <td>
+                <input type="radio" [(ngModel)]="riskPoint3" value="5" name="riskPoint3">Unknwon = 5 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint3" value="0" name="riskPoint3">More than 6 years = 0 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint3" value="5" name="riskPoint3">Between 3 and 6 years = 5 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint3" value="10" name="riskPoint3">Between 1 and 2 years = 10 risk points
+            </td>
+            <td>{{riskPoint3}}</td>
+        </tr>  
+        <tr>
+            <td>Sclerotinia severity in last host crop<i></i></td>
+            <td>
+                <input type="radio" [(ngModel)]="riskPoint4" value="5" name="riskPoint4">Unknwon = 5 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint4" value="0" name="riskPoint4">No disease = 0 points<br>
+                <input type="radio"[(ngModel)]="riskPoint4" value="5" name="riskPoint4">Low, 1-10% infected stems = 5 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint4" value="10" name="riskPoint4">Moderate, 11-30% infected stems = 10 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint4" value="15" name="riskPoint4">High, above 30% infected stems = 15 risk points
+            </td>
+            <td>{{riskPoint4}}</td>
+        </tr>
+        <tr>
+            <td>Estimation of sclerotia germination<i></i></td>
+            <td>
+                <input type="radio" [(ngModel)]="riskPoint5" value="5" name="riskPoint5">Unknwon = 5 risk points<br>
+                <label>Scouting for apothecia in the field</label><br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="0" name="riskPoint5">No apothecia = 0 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="5" name="riskPoint5">A few apothecia = 5 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="10" name="riskPoint5">Apothecia are easy to find = 10 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="15" name="riskPoint5">Apothecia are abundant = 15 risk points<br>
+                <label>Sclerotia germination in depots<a href="#">Check online map</a></label><br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="0" name="riskPoint5">0-5% sclerotia germination = 0 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="5" name="riskPoint5">6-25% sclerotia germination = 5 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="10" name="riskPoint5">26-50% sclerotia germination = 10 risk points<br>
+                <input type="radio" [(ngModel)]="riskPoint5" value="15" name="riskPoint5">51-100% sclerotia germination = 15 risk points
+            </td>
+            <td>{{riskPoint5}}</td>
+        </tr>                
+    </table>
+    <div id="button">
+        <button class="button" type="submit">Reset</button>
+        <button class="button" type="submit">Save</button>
+        <button class="button" type="submit">Email</button>
+        <button class="button" type="submit">Text</button>
+    </div>
+</body>
